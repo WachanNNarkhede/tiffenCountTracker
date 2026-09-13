@@ -20,9 +20,7 @@ import { isFuture } from "@/lib/utils";
 
 const FUTURE_ERROR = "You can only log meals for today or earlier.";
 
-const BACKEND = (
-  process.env.NEXT_PUBLIC_DATA_BACKEND ?? "local"
-).toLowerCase();
+
 
 /** Result of upserting/removing a single delivery — mirrors the API's JSON. */
 export interface SetDeliveryResult {
@@ -249,7 +247,6 @@ const localClient: DataClient = {
   },
 };
 
-export const dataClient: DataClient =
-  BACKEND === "api" ? apiClient : localClient;
+export const dataClient: DataClient = apiClient;
 
-export const activeBackend = BACKEND === "api" ? "api" : "local";
+export const activeBackend = "api";
